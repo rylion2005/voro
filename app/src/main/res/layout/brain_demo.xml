@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/TXV_Hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="32dp"
+        android:background="#9fb6cd"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text="" />
+
+    <Button
+        android:id="@+id/BTN_Hello"
+        android:layout_width="128dp"
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:background="#b3ee3a"
+        android:text="Hello"
+        android:textAllCaps="false" />
+
+</RelativeLayout>

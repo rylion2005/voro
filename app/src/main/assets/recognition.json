@@ -1,0 +1,54 @@
+{
+	"results_recognition":["今天天"],
+	"origin_result":{
+			"corpus_no":6510736084238725443,
+			"err_no":0,
+			"result":{
+				"word":["今天天"]
+			},
+			"sn":"d567204c-db0e-4e6e-98f1-7e3459232dce"
+	},
+	"error":0,
+	"best_result":"今天天",
+	"result_type":"partial_result"
+}
+
+{
+	"results_recognition":["今天天气很"],
+	"origin_result":{
+		"corpus_no":6510736084238725443,
+		"err_no":0,
+		"result":{
+			"word":["今天天气很"]
+		},
+		"sn":"d567204c-db0e-4e6e-98f1-7e3459232dce"
+	},
+	"error":0,
+	"best_result":"今天天气很",
+	"result_type":"partial_result"
+}
+
+{
+	"results_recognition":["今天天气很好"],
+	"origin_result":{
+		"corpus_no":6510736084238725443,
+		"err_no":0,"result":{
+			"word":["今天天气很好","金天天气很好"]
+		},
+		"sn":"d567204c-db0e-4e6e-98f1-7e3459232dce",
+		"voice_energy":18649.296875
+	},
+	"error":0,
+	"best_result":"今天天气很好",
+	"result_type":"final_result"
+}
+
+{
+	"error":0,
+	"origin_result":{
+		"error":"Speech Recognize success.",
+		"sn":"cuid=E11C0C75812F037831ADACE59BA3124A|787062430100668&sn=d567204c-db0e-4e6e-98f1-7e3459232dce&nettype=4",
+		"err_no":0
+	},
+	"desc":"Speech Recognize success."
+}

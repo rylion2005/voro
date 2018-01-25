@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:background="#00ffCC"
+        android:textSize="16dp"
+        android:text="Recognize Demoer"/>
+    <ImageView
+        android:id="@+id/IMV_Recorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center"
+        android:background="#2ba6fb"
+        android:src="@mipmap/microphone"/>
+    <Button
+        android:id="@+id/BTN_StartRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#b3ee3a"
+        android:textAllCaps="false"
+        android:text="Record"/>
+
+    <TextView
+        android:id="@+id/TXV_RecognizeResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        android:paddingLeft="8dp"
+        android:gravity="center_vertical"
+        android:background="#9fb6cd"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text="Recognize result:"/>
+</LinearLayout>
