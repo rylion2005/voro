@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.FloatBuffer;
 
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
 import com.voro.R;
@@ -94,35 +95,36 @@ public class BrainDemo extends AppCompatActivity implements View.OnClickListener
     **/
     private void getResults(){
 
-        final String[] input_sequences = {"encoder0", "encoder1", "encoder2", "encoder3", "encoder4"};
-        final byte[] input_bytes = {0, 4, 7, 57, 74};
-        final long dims = 5;
-        final String[] outputs = {"weights0", "weights1", "weights2", "weights3", "weights4"};
+        final long NUMBER_OF_DIMENSIONS = 5;
+        final String[] encoders = {"encoder0", "encoder1", "encoder2", "encoder3", "encoder4"};
+        final String[] decoders = {"decoder0", "decoder1", "decoder2", "decoder3", "decoder4"};
+        final String[] outputs = {
+                "embedding_attention_seq2seq/embedding_attention_decoder/attention_decoder/AttnOutputProjection/BiasAdd",
+                "embedding_attention_seq2seq/embedding_attention_decoder/attention_decoder/AttnOutputProjection_1/BiasAdd",
+                "embedding_attention_seq2seq/embedding_attention_decoder/attention_decoder/AttnOutputProjection_2/BiasAdd",
+                "embedding_attention_seq2seq/embedding_attention_decoder/attention_decoder/AttnOutputProjection_3/BiasAdd",
+                "embedding_attention_seq2seq/embedding_attention_decoder/attention_decoder/AttnOutputProjection_4/BiasAdd"};
 
-        //final String QUESTION =  "你是谁";
-        byte[] an = new byte[32];
+        final int[] encoderInts = {0, 0, 5, 7, 0};
+        final int[] decoderInts = {1, 11, 13, 15, 2};
 
-        if (mTfiInterface ==null){
+        if (mTfiInterface == null){
             Log.e(TAG, "tensor flow inference interface is null");
             return;
         }
 
-        // set input data
-        //byte[] q = QUESTION.getBytes("UTF-8");
-        //mTxvResults.append(QUESTION);
-        for(int i=0; i<4; i++){
-            mTfiInterface.feed(input_sequences[i], input_bytes, dims);
+        for(int i = 0; i < NUMBER_OF_DIMENSIONS; i++){
+            mTfiInterface.feed(encoders[i], encoderInts, NUMBER_OF_DIMENSIONS);
+            mTfiInterface.feed(decoders[i], decoderInts, NUMBER_OF_DIMENSIONS);
         }
 
-        // run tensor flow
-       // String[] outputNames = new String[]{outputs};
         mTfiInterface.run(outputs);
-
-        // get output results
-        for(int i=0; i<4; i++){
-            mTfiInterface.fetch(outputs[i], an);
-            Log.i(TAG, "output[" + i + "]: " + new String(an));
-            mTxvResults.append(new String(an));
+        for(int i = 0; i < NUMBER_OF_DIMENSIONS; i++){
+            FloatBuffer answers = FloatBuffer.allocate(512);
+            mTfiInterface.fetch(outputs[i], answers);
+            answers.get();
+            Log.i(TAG, "output[" + i + "]: " + answers.get());
+            mTxvResults.append("\n" + Float.toString(answers.get()));
         }
     }
 }
